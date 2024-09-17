@@ -27,20 +27,20 @@
 <meta property="og:site_name" content="希望你能带我走">
 <meta property="og:description" content="摘要：本文介绍了STM32芯片GPIO的功能和原理，HAL库 GPIO函数，以及CubeMX工具的使用；">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images%5Cblog%5CGPIO_01-1725463539954-10.jpg">
-<meta property="og:image" content="http://example.com/images%5Cblog%5CGPIO_02-1725463619515-24.jpg">
-<meta property="og:image" content="http://example.com/images%5Cblog%5CGPIO_04-1725463593207-19.jpg">
-<meta property="og:image" content="d:\AppCode\hexo\blog\kisekinoyama\source\images\blog\GPIO_03-1725463595316-21.jpg">
-<meta property="og:image" content="http://example.com/images%5Cblog%5CGPIO_05.jpg">
-<meta property="og:image" content="http://example.com/images%5Cblog%5CGPIO_06-1725463578520-12.png">
+<meta property="og:image" content="http://example.com/images/blog/GPIO_01-1725463539954-10.jpg">
+<meta property="og:image" content="http://example.com/images/blog/GPIO_02-1725463619515-24.jpg">
+<meta property="og:image" content="http://example.com/images/blog/GPIO_04-1725463593207-19.jpg">
+<meta property="og:image" content="http://example.com/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/AppCode/hexo/blog/kisekinoyama/source/images/blog/GPIO_03-1725463595316-21.jpg">
+<meta property="og:image" content="http://example.com/images/blog/GPIO_05.jpg">
+<meta property="og:image" content="http://example.com/images/blog/GPIO_06-1725463578520-12.png">
 <meta property="article:published_time" content="2024-09-01T08:25:51.000Z">
-<meta property="article:modified_time" content="2024-09-04T15:27:23.192Z">
+<meta property="article:modified_time" content="2024-09-17T15:56:19.766Z">
 <meta property="article:author" content="kisekino yama">
 <meta property="article:tag" content="Keil">
 <meta property="article:tag" content="MDK-ARM">
 <meta property="article:tag" content="GPIO">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images%5Cblog%5CGPIO_01-1725463539954-10.jpg">
+<meta name="twitter:image" content="http://example.com/images/blog/GPIO_01-1725463539954-10.jpg">
   
   
   
@@ -73,7 +73,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/%E7%85%A7%E7%89%87%E6%B5%8B%E8%AF%95/"><span class="title">照片测试</span></a><a class="item title" href="/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/"><span class="title">STM32-GPIO功能及其原理(基于HAL库和STM32CubeMX)</span></a><a class="item title" href="/2024/08/30/%E6%AC%A2%E8%BF%8E/"><span class="title">欢迎</span></a><a class="item title" href="/2024/08/28/hello-world/"><span class="title">Hello World</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/"><span class="title">STM32-GPIO功能及其原理(基于HAL库和STM32CubeMX)</span></a><a class="item title" href="/2024/09/17/%E7%85%A7%E7%89%87%E6%B5%8B%E8%AF%95/"><span class="title">照片测试</span></a><a class="item title" href="/2024/08/30/%E6%AC%A2%E8%BF%8E/"><span class="title">欢迎</span></a><a class="item title" href="/2024/08/28/hello-world/"><span class="title">Hello World</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -86,7 +86,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/">技术学习</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/STM32/">STM32</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-01T08:25:51.000Z">2024-09-01</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-09-04T15:27:23.192Z">2024-09-04</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-01T08:25:51.000Z">2024-09-01</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-09-17T15:56:19.766Z">2024-09-17</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -109,21 +109,21 @@
 <blockquote>
 <p>就是能推（Push）能拉（Pull）的意思。</p>
 </blockquote>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images%5Cblog%5CGPIO_01-1725463539954-10.jpg" alt="GPIO_01"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/blog/GPIO_01-1725463539954-10.jpg" alt="GPIO_01"></p>
 <h3 id="1-1-2-开漏输出"><a href="#1-1-2-开漏输出" class="headerlink" title="1.1.2 开漏输出"></a>1.1.2 开漏输出</h3><p>开漏（Open-Drain）输出原理如下图。和推挽输出的区别在于PMOS管没了，当Q&#x3D;0时能够将电平拉低，但是Q&#x3D;1时不能拉高电平，只能输出高阻态。此时可以通过上拉电阻接到所需要的高电平(3.3V~5V)。</p>
 <p>另外，开漏输出有“线与”的特点，多个开漏输出电路连在一起时，一个电路输出低电平，所有电路都会被拉低。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images%5Cblog%5CGPIO_02-1725463619515-24.jpg" alt="GPIO_02"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/blog/GPIO_02-1725463619515-24.jpg" alt="GPIO_02"></p>
 <h2 id="1-2-GPIO输入模式"><a href="#1-2-GPIO输入模式" class="headerlink" title="1.2 GPIO输入模式"></a>1.2 GPIO输入模式</h2><p>输入模式主要分为三种：上拉输入和下拉输入还有浮空输入。</p>
 <p>原理如图所示，实际上就是通过一个上拉电阻和一个下拉电阻来控制没有输入时的电平状态。顾名思义，上拉输入就是接入上拉电阻，没有输入时为高电平，当输入低电平时，电路电平被拉低；下拉输入相反，接入下拉电阻，没有输入时为低电平，输入高电平时电路电平被拉高；浮空输入则是上拉&#x2F;下拉电阻都不接，电路电平完全取决于输入电平。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images%5Cblog%5CGPIO_04-1725463593207-19.jpg" alt="GPIO_04"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/blog/GPIO_04-1725463593207-19.jpg" alt="GPIO_04"></p>
 <p>例如下面三个开关，如果将这三个开关用于GPIO输入的话，PA0可以设置为浮空或者下拉输入，当按键被按下时，输入高电平。PB2~PB4可以设置为浮空或者上拉输入，当按键被按下时，输入低电平。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="D:\AppCode\hexo\blog\kisekinoyama\source\images\blog\GPIO_03-1725463595316-21.jpg" alt="GPIO_03"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/AppCode\hexo\blog\kisekinoyama\source\images\blog\GPIO_03-1725463595316-21.jpg" alt="GPIO_03"></p>
 <p>整个GPIO模块的原理图如下。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images%5Cblog%5CGPIO_05.jpg" alt="GPIO_05"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/blog/GPIO_05.jpg" alt="GPIO_05"></p>
 <h1 id="2-使用GPIO工程"><a href="#2-使用GPIO工程" class="headerlink" title="2. 使用GPIO工程"></a>2. 使用GPIO工程</h1><p>以STM32C8T6为例。</p>
 <p>首先新建STM32CubeMX工程：File - New Project - 搜索F103C8T6 - 选择芯片。</p>
 <p>主界面如图所示。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images%5Cblog%5CGPIO_06-1725463578520-12.png" alt="GPIO_06"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/blog/GPIO_06-1725463578520-12.png" alt="GPIO_06"></p>
 <p>然后配置GPIO口。</p>
 <p>工程配置，笔者用的是MDK-ARM，用Keil软件编写C语言代码。这里可以选择生成C语言头文件。</p>
 <p>参考：</p>

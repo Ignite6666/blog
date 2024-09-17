@@ -27,21 +27,21 @@
 <meta property="og:site_name" content="希望你能带我走">
 <meta property="og:description" content="摘要：本文介绍了STM32芯片GPIO的功能和原理，HAL库 GPIO函数，以及CubeMX工具的使用；">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/IMG_20240917_234122.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_01-1725463539954-10.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_02-1725463619515-24.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_04-1725463593207-19.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_03-1725463595316-21.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_05.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_06-1725463578520-12.png">
+<meta property="og:image" content="http://example.com/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/GPIO_07.png">
 <meta property="article:published_time" content="2024-09-01T08:25:51.000Z">
-<meta property="article:modified_time" content="2024-09-17T16:42:43.774Z">
+<meta property="article:modified_time" content="2024-09-17T17:10:59.334Z">
 <meta property="article:author" content="kisekino yama">
 <meta property="article:tag" content="Keil">
 <meta property="article:tag" content="MDK-ARM">
 <meta property="article:tag" content="GPIO">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/IMG_20240917_234122.jpg">
+<meta name="twitter:image" content="http://example.com/images/blog/GPIO_01-1725463539954-10.jpg">
   
   
   
@@ -74,7 +74,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/"><span class="title">STM32-GPIO功能及其原理(基于HAL库和STM32CubeMX)</span></a><a class="item title" href="/2024/09/17/%E7%85%A7%E7%89%87%E6%B5%8B%E8%AF%95/"><span class="title">照片测试</span></a><a class="item title" href="/2024/08/30/%E6%AC%A2%E8%BF%8E/"><span class="title">欢迎</span></a><a class="item title" href="/2024/08/28/hello-world/"><span class="title">Hello World</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/"><span class="title">STM32-GPIO功能及其原理(基于HAL库和STM32CubeMX)</span></a><a class="item title" href="/2024/08/30/%E6%AC%A2%E8%BF%8E/"><span class="title">欢迎</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -87,7 +87,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/">技术学习</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/STM32/">STM32</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-01T08:25:51.000Z">2024-09-01</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-09-17T16:42:43.774Z">2024-09-18</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-01T08:25:51.000Z">2024-09-01</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-09-17T17:10:59.334Z">2024-09-18</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -103,8 +103,6 @@
 
 <h1 id="0-写在前面"><a href="#0-写在前面" class="headerlink" title="0. 写在前面"></a>0. 写在前面</h1><p>以下内容皆是基于笔者的嵌入式小白理解，部分语句并不够严谨，更多是为了自己和小白能够理解，如有错误敬请指正。</p>
 <p>部分软件的使用教程省略。</p>
-<p>图片测试，中秋节从小姨那边拿的月饼。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/IMG_20240917_234122.jpg" alt="IMG_20240917_234122"></p>
 <h1 id="1-GPIO基本原理"><a href="#1-GPIO基本原理" class="headerlink" title="1. GPIO基本原理"></a>1. GPIO基本原理</h1><p>GPIO是STM32的基础功能，能够进行引脚高&#x2F;低电平是输入输出，通俗来说，就是可以通过编写程序来控制某个引脚是低电平还是高电平(此时引脚的电平控制权在芯片)；或者能够检测外部输入的信号的高电平还是低电平(此时引脚的电平控制权在外设)。</p>
 <p>例如，如果GPIO是输出模式，那么引脚接LED灯的正极，LED灯的负极接GND(电路中的地线，也就是电路图中的电源负极，电压为0V)，如果给出指令，让GPIO输出高电平(即置位)，那么灯泡就会亮；反之让GPIO输出低电平(即复位)，那么灯泡就会熄灭。</p>
 <h2 id="1-1-GPIO输出模式"><a href="#1-1-GPIO输出模式" class="headerlink" title="1.1 GPIO输出模式"></a>1.1 GPIO输出模式</h2><p>GPIO共有两种输出模式：推挽输出和开漏输出。</p>
@@ -129,6 +127,7 @@
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/blog/GPIO_06-1725463578520-12.png" alt="GPIO_06"></p>
 <p>然后配置GPIO口。</p>
 <p>工程配置，笔者用的是MDK-ARM，用Keil软件编写C语言代码。这里可以选择生成C语言头文件。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/GPIO_07.png" alt="GPIO_07"></p>
 <p>参考：</p>
 <ol>
 <li>关于地线: <a target="_blank" rel="noopener" href="https://blog.csdn.net/wu_zhiyuan/article/details/134071796">笔记：电子设备接地，接的到底是什么地？</a></li>
@@ -143,7 +142,7 @@
 
 
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/09/17/%E7%85%A7%E7%89%87%E6%B5%8B%E8%AF%95/">照片测试</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/08/30/%E6%AC%A2%E8%BF%8E/">欢迎</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/08/30/%E6%AC%A2%E8%BF%8E/">欢迎</a></div></section></div>
 
 
 

@@ -30,11 +30,11 @@
 <meta property="og:image" content="http://example.com/images/blog/GPIO_01-1725463539954-10.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_02-1725463619515-24.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_04-1725463593207-19.jpg">
-<meta property="og:image" content="http://example.com/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/AppCode/hexo/blog/kisekinoyama/source/images/blog/GPIO_03-1725463595316-21.jpg">
+<meta property="og:image" content="http://example.com/images/blog/GPIO_03-1725463595316-21.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_05.jpg">
 <meta property="og:image" content="http://example.com/images/blog/GPIO_06-1725463578520-12.png">
 <meta property="article:published_time" content="2024-09-01T08:25:51.000Z">
-<meta property="article:modified_time" content="2024-09-17T15:56:19.766Z">
+<meta property="article:modified_time" content="2024-09-17T16:35:00.854Z">
 <meta property="article:author" content="kisekino yama">
 <meta property="article:tag" content="Keil">
 <meta property="article:tag" content="MDK-ARM">
@@ -86,7 +86,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/">技术学习</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/STM32/">STM32</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-01T08:25:51.000Z">2024-09-01</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-09-17T15:56:19.766Z">2024-09-17</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-01T08:25:51.000Z">2024-09-01</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-09-17T16:35:00.854Z">2024-09-18</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -102,6 +102,7 @@
 
 <h1 id="0-写在前面"><a href="#0-写在前面" class="headerlink" title="0. 写在前面"></a>0. 写在前面</h1><p>以下内容皆是基于笔者的嵌入式小白理解，部分语句并不够严谨，更多是为了自己和小白能够理解，如有错误敬请指正。</p>
 <p>部分软件的使用教程省略。</p>
+<p>test</p>
 <h1 id="1-GPIO基本原理"><a href="#1-GPIO基本原理" class="headerlink" title="1. GPIO基本原理"></a>1. GPIO基本原理</h1><p>GPIO是STM32的基础功能，能够进行引脚高&#x2F;低电平是输入输出，通俗来说，就是可以通过编写程序来控制某个引脚是低电平还是高电平(此时引脚的电平控制权在芯片)；或者能够检测外部输入的信号的高电平还是低电平(此时引脚的电平控制权在外设)。</p>
 <p>例如，如果GPIO是输出模式，那么引脚接LED灯的正极，LED灯的负极接GND(电路中的地线，也就是电路图中的电源负极，电压为0V)，如果给出指令，让GPIO输出高电平(即置位)，那么灯泡就会亮；反之让GPIO输出低电平(即复位)，那么灯泡就会熄灭。</p>
 <h2 id="1-1-GPIO输出模式"><a href="#1-1-GPIO输出模式" class="headerlink" title="1.1 GPIO输出模式"></a>1.1 GPIO输出模式</h2><p>GPIO共有两种输出模式：推挽输出和开漏输出。</p>
@@ -117,7 +118,7 @@
 <p>原理如图所示，实际上就是通过一个上拉电阻和一个下拉电阻来控制没有输入时的电平状态。顾名思义，上拉输入就是接入上拉电阻，没有输入时为高电平，当输入低电平时，电路电平被拉低；下拉输入相反，接入下拉电阻，没有输入时为低电平，输入高电平时电路电平被拉高；浮空输入则是上拉&#x2F;下拉电阻都不接，电路电平完全取决于输入电平。</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/blog/GPIO_04-1725463593207-19.jpg" alt="GPIO_04"></p>
 <p>例如下面三个开关，如果将这三个开关用于GPIO输入的话，PA0可以设置为浮空或者下拉输入，当按键被按下时，输入高电平。PB2~PB4可以设置为浮空或者上拉输入，当按键被按下时，输入低电平。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2024/09/01/STM32-GPIO%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86(%E5%9F%BA%E4%BA%8EHAL%E5%BA%93%E5%92%8CCubeMX)/AppCode\hexo\blog\kisekinoyama\source\images\blog\GPIO_03-1725463595316-21.jpg" alt="GPIO_03"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/blog/GPIO_03-1725463595316-21.jpg" alt="GPIO_03"></p>
 <p>整个GPIO模块的原理图如下。</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/blog/GPIO_05.jpg" alt="GPIO_05"></p>
 <h1 id="2-使用GPIO工程"><a href="#2-使用GPIO工程" class="headerlink" title="2. 使用GPIO工程"></a>2. 使用GPIO工程</h1><p>以STM32C8T6为例。</p>
